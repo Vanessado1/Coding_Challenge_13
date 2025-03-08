@@ -26,3 +26,19 @@ function addEmployeeCard(name, position) {
 // shows the employee card 
 addEmployeeCard('Jessica Hugh', 'Software Engineer');
 addEmployeeCard('Jason Johnson', 'Project Manager');
+
+// Task 3- converting nodelists to arrays for bulk updates 
+// created a function to update employee cards 
+function highlightEmployeeCards() {
+    // selects all employee cards
+    const employeeCards = document.querySelectorAll('.employee-card');
+    // convert NodeList to array 
+    const employeeCardsArray = Array.from(employeeCards);
+    // update each cards style 
+    employeeCardsArray.forEach(card => {
+        card.style.backgroundColor = '#fff9c4';
+        card.style.border = '2px solid #9e9e9e';
+    });
+}
+// call function to highlight employee cards 
+highlightEmployeeCards();
