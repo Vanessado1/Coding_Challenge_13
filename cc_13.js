@@ -13,7 +13,11 @@ function addEmployeeCard(name, position) {
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
     removeButton.addEventListener('click', function() {
-        card.remove();
+        // Prevents event from coming up to the container 
+        event.stopPropagation();
+        // remove cards using removeChild 
+        const employeeContainer = document.getElementById('employeeContainer');
+            employeeContainer.removeChild(card);
     });
     // append the name, position, and remove button 
     card.appendChild(nameHeading);
@@ -26,7 +30,8 @@ function addEmployeeCard(name, position) {
 // shows the employee card 
 addEmployeeCard('Jessica Hugh', 'Software Engineer');
 addEmployeeCard('Jason Johnson', 'Project Manager');
-
+addEmployeeCard('Ricky Huynh', 'Mechanical Engineer');
+addEmployeeCard('Richard Do', 'Mechanic');
 // Task 3- converting nodelists to arrays for bulk updates 
 // created a function to update employee cards 
 function highlightEmployeeCards() {
@@ -42,3 +47,9 @@ function highlightEmployeeCards() {
 }
 // call function to highlight employee cards 
 highlightEmployeeCards();
+
+// Task 4- implementing removal of employee cards with event bubbling 
+const employeeContainer = document.getElementById('employeeContainer');
+employeeContainer.addEventListener('click', function(event) {
+    console.log('Employee card clicked:', event.target); // logs the clicks made by users 
+});
