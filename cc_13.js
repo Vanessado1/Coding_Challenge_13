@@ -26,6 +26,33 @@ function addEmployeeCard(name, position) {
     // append the card if the employeeContainer 
     const employeeContainer = document.getElementById('employeeContainer');
     employeeContainer.appendChild(card);
+// Task 5 
+// double click function 
+    card.addEventListener('dblclick', function() {
+        // adds new name value 
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.value = nameHeading.textContent;
+        // adds new positin value 
+        const positionInput = document.createElement('input');
+        positionInput.type = 'text';
+        positionInput.value = positionParagraph.textContent;
+        // creating the save button 
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Save';
+        saveButton.addEventListener('click', function() {
+            nameHeading.textContent = nameInput.value; // update card value 
+            positionParagraph.textContent = positionInput.value; // update card value 
+            // revert input back to text 
+            card.replaceChild(nameHeading, nameInput);
+            card.replaceChild(positionParagraph, positionInput);
+            card.removeChild(saveButton);
+        });
+        // replace text with input fields 
+        card.replaceChild(nameInput, nameHeading);
+        card.replaceChild(positionInput, positionParagraph);
+        card.appendChild(saveButton);
+    });
 }
 // shows the employee card 
 addEmployeeCard('Jessica Hugh', 'Software Engineer');
